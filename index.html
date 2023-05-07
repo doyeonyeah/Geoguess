@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Street View Game</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #pano {
+      height: 400px;
+      width: 100%;
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+
+    #distance {
+      padding-top: 20px;
+    }
+  </style>
+  <script>
+    let apiKey = '';
+    function loadGoogleMapsApi() {
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=geometry,places&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  </script>
+
+
+  <script src="app.js"></script>
+</head>
+
+<body onload="initMap()">
+  <div id="api-key-container">
+    <p>[High-Stakes Mission Briefing]</p>
+    <p>
+      Agent, you are about to embark on a mission that could determine the fate of the world. The nefarious Bombers have
+      acquired an atomic bomb and are prepared to unleash its devastating power. The target: an unknown location that
+      could result in catastrophic consequences on an unimaginable scale.
+    </p>
+    <p>
+      Your mission, should you choose to accept it, is to track down the location of this deadly device before time runs
+      out. Failure is not an option. Once you have pinpointed the bomb's location, our elite network of regional
+      operatives will be deployed to neutralize the threat and disarm the weapon. Time is of the essence, and the fate
+      of millions rests on your shoulders.
+    </p>
+    <p>
+      To aid you in your pursuit, you will be provided with top-secret access to our satellite surveillance system.
+      Input your security code to unlock the power of this cutting-edge technology and begin your harrowing quest.
+    </p>
+    <p>
+      Good luck, agent. The clock is ticking, and the world is counting on you. This message won't self-destruct in five
+      seconds.
+    </p>
+    <label for="api-key-input">Security Code (Google Maps API Key):</label>
+    <input type="text" id="api-key-input" />
+    <button id="api-key-submit">Login</button>
+  </div>
+  <div id="map-container">
+    <div id="pano"></div>
+    <div id="map"></div>
+  </div>
+  <div id="info">
+    <p><strong>Distance:</strong> <span id="distance"></span></p>
+    <p><strong>Country:</strong> <span id="country"></span></p>
+    <p><strong>Number of Guesses:</strong> <span id="guess-count"></span></p>
+  </div>
+
+
+</body>
+
+</html>
